@@ -13,7 +13,7 @@ Then run the following command:
 
 ```$ python3 main.py create-teams-key```
 
-To run the program to scrape for game stats from a specific date, run the following command:  
+To run the program to scrape for game stats starting from a specific date, run the following command:  
 
 ```$ python3 main.py --date=YYYY-MM-DD```
 

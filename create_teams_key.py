@@ -7,6 +7,6 @@ def create_teams_key(file_name: str) -> dict[str, str]:
     reader = csv.reader(file)
     for i, line in enumerate(reader):
       if i > 0:
-        key.update({line[1]:line[0]})
+        key.update({line[1]:line[0].replace("(", "").replace(")", "")})
   with open("teams_key.json", "w") as file:
-    file.write(json.dumps(key))
+    file.write(json.dumps(key, indent=2))

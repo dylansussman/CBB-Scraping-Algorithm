@@ -10,14 +10,7 @@ class Game:
     self._underdog = ""
     self._home_score = ""
     self._away_score = ""
-
-  @property
-  def date(self):
-    return self._date
-
-  @date.setter
-  def date(self, value):
-    self._date = value
+    self._spread = ""
 
   @property
   def home(self):
@@ -67,3 +60,10 @@ class Game:
   def away_score(self, value):
     self._away_score = value
 
+  @property
+  def spread(self):
+    return self._spread
+
+  @spread.setter
+  def spread(self, value):
+    self._spread = value
