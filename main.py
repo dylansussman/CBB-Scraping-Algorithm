@@ -1,5 +1,8 @@
 import sys
 import json
+from openpyxl.workbook.workbook import Workbook
+from openpyxl.worksheet.worksheet import Worksheet
+import openpyxl as xls
 
 from create_teams_key import create_teams_key
 from thescore_cbb_scraper import thescoreCbbScraper
@@ -24,8 +27,7 @@ def main(create_key: bool, date: str):
   while next_day:
     games: list[Game] = scraper.get_days_games(key)
     next_day, date = (False, "") if date == "" else scraper.next_day(date)
-    # TODO Output games to Excel file
-  print(games)
+    scraper.print_days_games(games)
   
 
 if __name__ == '__main__':

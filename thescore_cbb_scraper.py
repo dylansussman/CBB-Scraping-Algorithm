@@ -7,8 +7,14 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
 import datetime
+from openpyxl.workbook.workbook import Workbook
+from openpyxl.worksheet.worksheet import Worksheet
+import openpyxl as xls
 
 from game import Game
+
+OUTPUT_FILE_NAME = "CBB_scores_and_data.xlsx"
+OUTPUT_SHEET_NAME = "Game Data"
 
 class thescoreCbbScraper:
 
@@ -104,6 +110,13 @@ class thescoreCbbScraper:
     team: str = team_element_text[:team_element_text.index("\n")]
     team = team[team.index(" ")+1:] if "(" in team else team
     team = key.get(team) if key.get(team) else team
-    team_score = team_element.find_element(By.XPATH, "./div/div[last()]").text
-    return (team, team_score)    
+    team_score = int(team_element.find_element(By.XPATH, "./div/div[last()]").text)
+    return (team, team_score)
+  
+  def print_days_games(self, games: Game):
+    wb: Workbook = xls.load_workbook(OUTPUT_FILE_NAME)
+    sheet: Worksheet = wb[OUTPUT_SHEET_NAME]
+    for game in games:
+      sheet.append(list(vars(game).values()))
+    wb.save(OUTPUT_FILE_NAME)
     

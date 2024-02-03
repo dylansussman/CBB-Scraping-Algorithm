@@ -3,14 +3,14 @@ import datetime
 class Game:
 
   def __init__(self, date: str, home_team: str, away_team: str) -> None:
-    self._date = date
-    self._home = home_team
-    self._away = away_team
-    self._favorite = ""
-    self._underdog = ""
-    self._home_score = ""
-    self._away_score = ""
-    self._spread = ""
+    self._date: str = date
+    self._home: str = home_team
+    self._away: str = away_team
+    self._favorite: str = ""
+    self._underdog: str = ""
+    self._home_score: int = 0
+    self._away_score: int = 0
+    self._spread: str = ""
 
   @property
   def home(self):

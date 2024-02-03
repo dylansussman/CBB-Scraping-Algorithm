@@ -1,9 +1,9 @@
 # README
 
 # Table of Contents
-1. [Running Options](#Run-Options)
+1. [Running Options](#Running-Options)
 
-## Run Options
+## Running Options
 To run the program to scrape for the current day's game stats, run the following command:
 
 ```$ python3 main.py```
