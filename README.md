@@ -17,4 +17,6 @@ To run the program to scrape for game stats starting from a specific date, run t
 
 ```$ python3 main.py --date=YYYY-MM-DD```
 
+# Need to add installation instructions for python/python3, pip/pip3, selenium, openpyxl, webdriver_manager.chrome
+
 

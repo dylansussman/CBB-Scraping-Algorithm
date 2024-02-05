@@ -1,19 +1,16 @@
 import sys
 import json
-from openpyxl.workbook.workbook import Workbook
-from openpyxl.worksheet.worksheet import Worksheet
-import openpyxl as xls
 
 from create_teams_key import create_teams_key
 from thescore_cbb_scraper import thescoreCbbScraper
 from game import Game
 
 # NOTE If a new key is being created make sure this relfects the correct path
-TEAMS_KEY_INPUT_FILE_NAME = "../Desktop/Template Wid Scraping.csv"
+TEAMS_KEY_INPUT_FILE_NAME = "Template Wid Scraping.csv"
 
 def main(create_key: bool, date: str):
-  if create_key:
-    create_teams_key(TEAMS_KEY_INPUT_FILE_NAME)
+  # if create_key:
+  create_teams_key(TEAMS_KEY_INPUT_FILE_NAME)
   
   key: dict[str, str]
   with open("teams_key.json", "r") as file:
@@ -21,14 +18,14 @@ def main(create_key: bool, date: str):
   
   scraper: thescoreCbbScraper = thescoreCbbScraper()
   if date:
+    scraper.change_to_all_conferences()
     scraper.start_from_date(date)
   
   next_day = True
   while next_day:
     games: list[Game] = scraper.get_days_games(key)
-    next_day, date = (False, "") if date == "" else scraper.next_day(date)
     scraper.print_days_games(games)
-  
+    next_day, date = (False, "") if date == "" else scraper.next_day(date)
 
 if __name__ == '__main__':
   create_key: bool = False
